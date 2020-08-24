@@ -1,6 +1,6 @@
 {
   "name": "quantifai-editorjs",
-  "version": "2.18.0-mp.4",
+  "version": "2.18.0-mp.4.0.1",
   "description": "Editor.js — Native JS, based on API and Open Source",
   "main": "dist/editor.js",
   "types": "./types/index.d.ts",
@@ -57,7 +57,7 @@
     "postcss-nested": "^4.1.2",
     "postcss-nested-ancestors": "^2.0.0",
     "postcss-preset-env": "^6.6.0",
-    "quantifai-editorjs-shortcuts": "1.1.1-mp.2",
+    "quantifai-editorjs-shortcuts": "1.1.1-mp.2.0.1",
     "raw-loader": "^4.0.1",
     "rimraf": "^3.0.2",
     "stylelint": "^13.3.3",
