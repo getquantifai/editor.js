@@ -1,6 +1,6 @@
 {
   "name": "quantifai-editorjs",
-  "version": "2.18.0-mp.3",
+  "version": "2.18.0-mp.4",
   "description": "Editor.js — Native JS, based on API and Open Source",
   "main": "dist/editor.js",
   "types": "./types/index.d.ts",
@@ -37,7 +37,6 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/register": "^7.9.0",
     "@babel/runtime": "^7.9.2",
-    "@codexteam/shortcuts": "^1.1.1",
     "@types/webpack": "^4.41.12",
     "@types/webpack-env": "^1.15.2",
     "babel-loader": "^8.1.0",
