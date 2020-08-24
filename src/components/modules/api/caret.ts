@@ -13,6 +13,7 @@ export default class CaretAPI extends Module {
    */
   public get methods(): Caret {
     return {
+      set: this.set,
       setToFirstBlock: this.setToFirstBlock,
       setToLastBlock: this.setToLastBlock,
       setToPreviousBlock: this.setToPreviousBlock,
@@ -30,15 +31,22 @@ export default class CaretAPI extends Module {
    *
    * @returns {boolean}
    */
-  private setToFirstBlock = (position: string = this.Editor.Caret.positions.DEFAULT, offset = 0): boolean => {
+  private setToFirstBlock = (
+    position: string = this.Editor.Caret.positions.DEFAULT,
+    offset = 0
+  ): boolean => {
     if (!this.Editor.BlockManager.firstBlock) {
       return false;
     }
 
-    this.Editor.Caret.setToBlock(this.Editor.BlockManager.firstBlock, position, offset);
+    this.Editor.Caret.setToBlock(
+      this.Editor.BlockManager.firstBlock,
+      position,
+      offset
+    );
 
     return true;
-  }
+  };
 
   /**
    * Sets caret to the last Block
@@ -48,15 +56,22 @@ export default class CaretAPI extends Module {
    *
    * @returns {boolean}
    */
-  private setToLastBlock = (position: string = this.Editor.Caret.positions.DEFAULT, offset = 0): boolean => {
+  private setToLastBlock = (
+    position: string = this.Editor.Caret.positions.DEFAULT,
+    offset = 0
+  ): boolean => {
     if (!this.Editor.BlockManager.lastBlock) {
       return false;
     }
 
-    this.Editor.Caret.setToBlock(this.Editor.BlockManager.lastBlock, position, offset);
+    this.Editor.Caret.setToBlock(
+      this.Editor.BlockManager.lastBlock,
+      position,
+      offset
+    );
 
     return true;
-  }
+  };
 
   /**
    * Sets caret to the previous Block
@@ -74,10 +89,14 @@ export default class CaretAPI extends Module {
       return false;
     }
 
-    this.Editor.Caret.setToBlock(this.Editor.BlockManager.previousBlock, position, offset);
+    this.Editor.Caret.setToBlock(
+      this.Editor.BlockManager.previousBlock,
+      position,
+      offset
+    );
 
     return true;
-  }
+  };
 
   /**
    * Sets caret to the next Block
@@ -87,15 +106,22 @@ export default class CaretAPI extends Module {
    *
    * @returns {boolean}
    */
-  private setToNextBlock = (position: string = this.Editor.Caret.positions.DEFAULT, offset = 0): boolean => {
+  private setToNextBlock = (
+    position: string = this.Editor.Caret.positions.DEFAULT,
+    offset = 0
+  ): boolean => {
     if (!this.Editor.BlockManager.nextBlock) {
       return false;
     }
 
-    this.Editor.Caret.setToBlock(this.Editor.BlockManager.nextBlock, position, offset);
+    this.Editor.Caret.setToBlock(
+      this.Editor.BlockManager.nextBlock,
+      position,
+      offset
+    );
 
     return true;
-  }
+  };
 
   /**
    * Sets caret to the Block by passed index
@@ -115,10 +141,24 @@ export default class CaretAPI extends Module {
       return false;
     }
 
-    this.Editor.Caret.setToBlock(this.Editor.BlockManager.blocks[index], position, offset);
+    this.Editor.Caret.setToBlock(
+      this.Editor.BlockManager.blocks[index],
+      position,
+      offset
+    );
 
     return true;
-  }
+  };
+
+  /**
+   * Creates Document Range and sets caret to the element with offset
+   *
+   * @param {HTMLElement} element - target node.
+   * @param {number} offset - offset
+   */
+  private set = (element: HTMLElement, offset = 0): void => {
+    this.Editor.Caret.set(element, offset);
+  };
 
   /**
    * Sets caret to the Editor
@@ -133,5 +173,5 @@ export default class CaretAPI extends Module {
     }
 
     return this.setToFirstBlock(this.Editor.Caret.positions.START);
-  }
+  };
 }
