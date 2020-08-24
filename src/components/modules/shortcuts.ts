@@ -1,9 +1,9 @@
-import Shortcut from '@codexteam/shortcuts';
+import Shortcut from "quantifai-editorjs-shortcuts";
 
 /**
  * Contains keyboard and mouse events binded on each Block by Block Manager
  */
-import Module from '../__module';
+import Module from "../__module";
 
 /**
  * ShortcutData interface
@@ -14,7 +14,6 @@ import Module from '../__module';
  * @interface ShortcutData
  */
 export interface ShortcutData {
-
   /**
    * Shortcut name
    * Ex. CMD+I, CMD+B ....
@@ -62,7 +61,9 @@ export default class Shortcuts extends Module {
    * @param {string} shortcut - shortcut name
    */
   public remove(shortcut: string): void {
-    const index = this.registeredShortcuts.findIndex((shc) => shc.name === shortcut);
+    const index = this.registeredShortcuts.findIndex(
+      (shc) => shc.name === shortcut
+    );
 
     this.registeredShortcuts[index].remove();
     this.registeredShortcuts.splice(index, 1);

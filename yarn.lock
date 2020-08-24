@@ -686,10 +686,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@codexteam/shortcuts@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@codexteam/shortcuts/-/shortcuts-1.1.1.tgz#6aa19ed0476da78045847ddc6d5b311f2f015094"
-
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -5039,6 +5035,11 @@ punycode@^2.1.0:
 q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
+
+quantifai-editorjs-shortcuts@1.1.1-mp.2.0.1:
+  version "1.1.1-mp.2.0.1"
+  resolved "https://registry.yarnpkg.com/quantifai-editorjs-shortcuts/-/quantifai-editorjs-shortcuts-1.1.1-mp.2.0.1.tgz#7b239e3ad00a7642c4ed505523ad4d51a0490843"
+  integrity sha512-KdO7wze0IL+RaPR32rkVuMDeBzXAy2hxd74+jjfl4MdsOFYVFIXV5R9TI4rpVMUdcF35ayMsV/+gky88plfEMQ==
 
 querystring-es3@^0.2.0:
   version "0.2.1"

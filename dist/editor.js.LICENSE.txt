@@ -17,7 +17,7 @@
 /*!
  * Editor.js
  * 
- * @version 2.18.0
+ * @version 2.18.0-mp.4
  * 
  * @licence Apache-2.0
  * @author CodeX <https://codex.so>
@@ -31,7 +31,11 @@
  * @copyright CodeX (https://codex.so)
  * @license MIT
  * @author CodeX (https://codex.so)
- * @version 1.1.1
+ * @version 1.1.1-mp.2
+ */
+
+/*!
+ * Programatically add the following
  */
 
 /**

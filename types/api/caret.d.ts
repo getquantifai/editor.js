@@ -2,6 +2,13 @@
  * Describes Editor`s caret API
  */
 export interface Caret {
+  /**
+   * Creates Document Range and sets caret to the element with offset
+   *
+   * @param {HTMLElement} element - target node.
+   * @param {number} offset - offset
+   */
+  set(element?: HTMLElement, offset?: number): void;
 
   /**
    * Sets caret to the first Block
@@ -11,7 +18,10 @@ export interface Caret {
    *
    * @return {boolean}
    */
-  setToFirstBlock(position?: 'end'|'start'|'default', offset?: number): boolean;
+  setToFirstBlock(
+    position?: 'end' | 'start' | 'default',
+    offset?: number
+  ): boolean;
 
   /**
    * Sets caret to the last Block
@@ -21,7 +31,10 @@ export interface Caret {
    *
    * @return {boolean}
    */
-  setToLastBlock(position?: 'end'|'start'|'default', offset?: number): boolean;
+  setToLastBlock(
+    position?: 'end' | 'start' | 'default',
+    offset?: number
+  ): boolean;
 
   /**
    * Sets caret to the previous Block
@@ -31,7 +44,10 @@ export interface Caret {
    *
    * @return {boolean}
    */
-  setToPreviousBlock(position?: 'end'|'start'|'default', offset?: number): boolean;
+  setToPreviousBlock(
+    position?: 'end' | 'start' | 'default',
+    offset?: number
+  ): boolean;
 
   /**
    * Sets caret to the next Block
@@ -41,7 +57,10 @@ export interface Caret {
    *
    * @return {boolean}
    */
-  setToNextBlock(position?: 'end'|'start'|'default', offset?: number): boolean;
+  setToNextBlock(
+    position?: 'end' | 'start' | 'default',
+    offset?: number
+  ): boolean;
 
   /**
    * Sets caret to the Block by passed index
@@ -52,7 +71,11 @@ export interface Caret {
    *
    * @return {boolean}
    */
-  setToBlock(index: number, position?: 'end'|'start'|'default', offset?: number): boolean;
+  setToBlock(
+    index: number,
+    position?: 'end' | 'start' | 'default',
+    offset?: number
+  ): boolean;
 
   /**
    * Sets caret to the Editor
