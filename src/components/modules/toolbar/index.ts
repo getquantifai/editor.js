@@ -60,7 +60,7 @@ export default class Toolbar extends Module {
   /**
    * HTML Elements used for Toolbar UI
    */
-  public nodes: {[key: string]: HTMLElement} = {
+  public nodes: { [key: string]: HTMLElement } = {
     wrapper: null,
     content: null,
     actions: null,
@@ -78,7 +78,7 @@ export default class Toolbar extends Module {
    *
    * @returns {object}
    */
-  public get CSS(): {[name: string]: string} {
+  public get CSS(): { [name: string]: string } {
     return {
       toolbar: 'ce-toolbar',
       content: 'ce-toolbar__content',
@@ -123,22 +123,36 @@ export default class Toolbar extends Module {
      *  - Toolbox
      */
     this.nodes.plusButton = $.make('div', this.CSS.plusButton);
-    $.append(this.nodes.plusButton, $.svg('plus', 14, 14));
-    $.append(this.nodes.content, this.nodes.plusButton);
 
-    this.Editor.Listeners.on(this.nodes.plusButton, 'click', () => this.plusButtonClicked(), false);
+    if (!this.config.hideToolbox) {
+      $.append(this.nodes.plusButton, $.svg('plus', 14, 14));
+      $.append(this.nodes.content, this.nodes.plusButton);
 
-    /**
-     * Add events to show/hide tooltip for plus button
-     */
-    const tooltipContent = $.make('div');
+      this.Editor.Listeners.on(
+        this.nodes.plusButton,
+        'click',
+        () => this.plusButtonClicked(),
+        false
+      );
 
-    tooltipContent.appendChild(document.createTextNode(I18n.ui(I18nInternalNS.ui.toolbar.toolbox, 'Add')));
-    tooltipContent.appendChild($.make('div', this.CSS.plusButtonShortcut, {
-      textContent: '⇥ Tab',
-    }));
+      /**
+       * Add events to show/hide tooltip for plus button
+       */
+      const tooltipContent = $.make('div');
 
-    this.Editor.Tooltip.onHover(this.nodes.plusButton, tooltipContent);
+      tooltipContent.appendChild(
+        document.createTextNode(
+          I18n.ui(I18nInternalNS.ui.toolbar.toolbox, 'Add')
+        )
+      );
+      tooltipContent.appendChild(
+        $.make('div', this.CSS.plusButtonShortcut, {
+          textContent: '⇥ Tab',
+        })
+      );
+
+      this.Editor.Tooltip.onHover(this.nodes.plusButton, tooltipContent);
+    }
 
     /**
      * Make a Toolbox
@@ -151,13 +165,19 @@ export default class Toolbar extends Module {
      *  - Remove Block Button
      *  - Settings Panel
      */
-    this.nodes.blockActionsButtons = $.make('div', this.CSS.blockActionsButtons);
+    this.nodes.blockActionsButtons = $.make(
+      'div',
+      this.CSS.blockActionsButtons
+    );
     this.nodes.settingsToggler = $.make('span', this.CSS.settingsToggler);
     const settingsIcon = $.svg('dots', 8, 8);
 
     $.append(this.nodes.settingsToggler, settingsIcon);
     $.append(this.nodes.blockActionsButtons, this.nodes.settingsToggler);
-    $.append(this.nodes.actions, this.nodes.blockActionsButtons);
+
+    if (!this.config.hideToolbar) {
+      $.append(this.nodes.actions, this.nodes.blockActionsButtons);
+    }
 
     this.Editor.Tooltip.onHover(
       this.nodes.settingsToggler,
@@ -225,7 +245,9 @@ export default class Toolbar extends Module {
     /**
      * Move Toolbar to the Top coordinate of Block
      */
-    this.nodes.wrapper.style.transform = `translate3D(0, ${Math.floor(toolbarY)}px, 0)`;
+    this.nodes.wrapper.style.transform = `translate3D(0, ${Math.floor(
+      toolbarY
+    )}px, 0)`;
   }
 
   /**
@@ -277,9 +299,10 @@ export default class Toolbar extends Module {
    *
    * @returns {{hide: function(): void, show: function(): void}}
    */
-  public get plusButton(): {hide: () => void; show: () => void} {
+  public get plusButton(): { hide: () => void; show: () => void } {
     return {
-      hide: (): void => this.nodes.plusButton.classList.add(this.CSS.plusButtonHidden),
+      hide: (): void =>
+        this.nodes.plusButton.classList.add(this.CSS.plusButtonHidden),
       show: (): void => {
         if (this.Editor.Toolbox.isEmpty) {
           return;
@@ -294,7 +317,7 @@ export default class Toolbar extends Module {
    *
    * @returns {{hide: function(): void, show: function(): void}}
    */
-  private get blockActions(): {hide: () => void; show: () => void} {
+  private get blockActions(): { hide: () => void; show: () => void } {
     return {
       hide: (): void => {
         this.nodes.actions.classList.remove(this.CSS.actionsOpened);
@@ -320,7 +343,9 @@ export default class Toolbar extends Module {
     /**
      * Settings toggler
      */
-    this.Editor.Listeners.on(this.nodes.settingsToggler, 'click', () => this.settingsTogglerClicked());
+    this.Editor.Listeners.on(this.nodes.settingsToggler, 'click', () =>
+      this.settingsTogglerClicked()
+    );
   }
 
   /**

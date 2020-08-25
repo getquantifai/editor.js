@@ -1,7 +1,7 @@
-import {ToolConstructable, ToolSettings} from '../tools';
-import {API, LogLevels, OutputData} from '../index';
-import {SanitizerConfig} from './sanitizer-config';
-import {I18nConfig} from './i18n-config';
+import { ToolConstructable, ToolSettings } from '../tools';
+import { API, LogLevels, OutputData } from '../index';
+import { SanitizerConfig } from './sanitizer-config';
+import { I18nConfig } from './i18n-config';
 
 export interface EditorConfig {
   /**
@@ -29,7 +29,7 @@ export interface EditorConfig {
 
   /**
    * @deprecated
-   * This property will be deprecated in the next major release. 
+   * This property will be deprecated in the next major release.
    * Use the 'defaultBlock' property instead.
    */
   initialBlock?: string;
@@ -37,7 +37,7 @@ export interface EditorConfig {
   /**
    * First Block placeholder
    */
-  placeholder?: string|false;
+  placeholder?: string | false;
 
   /**
    * Define default sanitizer configuration
@@ -51,9 +51,14 @@ export interface EditorConfig {
   hideToolbar?: boolean;
 
   /**
+   * If true, toolbox won't be shown
+   */
+  hideToolbox?: boolean;
+
+  /**
    * Map of Tools to use
    */
-  tools?: {[toolName: string]: ToolConstructable|ToolSettings};
+  tools?: { [toolName: string]: ToolConstructable | ToolSettings };
 
   /**
    * Data to render on Editor start
