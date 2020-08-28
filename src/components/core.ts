@@ -156,13 +156,11 @@ export default class Core {
 
     _.setLogLevel(this.config.logLevel);
 
-
     /**
      * If default Block's Tool was not passed, use the Paragraph Tool
      */
     _.deprecationAssert(Boolean(this.config.initialBlock), 'config.initialBlock', 'config.defaultBlock');
     this.config.defaultBlock = this.config.defaultBlock || this.config.initialBlock || 'paragraph';
-
 
     /**
      * Height of Editor's bottom area that allows to set focus on the last Block
@@ -212,8 +210,17 @@ export default class Core {
     /**
      * Adjust i18n
      */
-    if (config.i18n && config.i18n.messages) {
+    if (config.i18n?.messages) {
       I18n.setDictionary(config.i18n.messages);
+    }
+
+    /**
+     * Text direction. If not set, uses ltr
+     */
+    if (config.i18n?.direction) {
+      this.config.i18n = {
+        direction: config.i18n?.direction || 'ltr',
+      };
     }
   }
 
