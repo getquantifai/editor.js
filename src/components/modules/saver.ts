@@ -29,7 +29,7 @@ export default class Saver extends Module {
   public async save(): Promise<OutputData> {
     const { BlockManager, Sanitizer, ModificationsObserver } = this.Editor;
     const blocks = BlockManager.blocks,
-        chainData = [];
+      chainData = [];
 
     /**
      * Disable modifications observe while saving
@@ -56,7 +56,7 @@ export default class Saver extends Module {
    */
   private async getSavedData(block: Block): Promise<ValidatedData> {
     const blockData = await block.save();
-    const isValid = blockData && await block.validate(blockData.data);
+    const isValid = blockData && (await block.validate(blockData.data));
 
     return {
       ...blockData,
@@ -111,10 +111,16 @@ export default class Saver extends Module {
     _.log('Total', 'log', totalTime);
     _.log(undefined, 'groupEnd');
 
+    const editorNode = this.Editor.UI.nodes.holder.querySelector(
+      '.codex-editor__redactor'
+    );
+
     return {
       time: +new Date(),
       blocks,
       version: VERSION,
+      html: editorNode.innerHTML.replace(/ contenteditable="true"/gm, ''),
+      text: editorNode.textContent,
     };
   }
 }

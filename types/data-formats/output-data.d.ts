@@ -1,4 +1,4 @@
-import {BlockToolData} from '../tools';
+import { BlockToolData } from '../tools';
 
 /**
  * Output of one Tool
@@ -29,4 +29,14 @@ export interface OutputData {
    * Saved Blocks
    */
   blocks: OutputBlockData[];
+
+  /**
+   * Saved HTML
+   */
+  html?: string;
+
+  /**
+   * Saved Text
+   */
+  text?: string;
 }
