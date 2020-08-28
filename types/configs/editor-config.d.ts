@@ -90,4 +90,9 @@ export interface EditorConfig {
    * @param {API} api - editor.js api
    */
   onChange?(api: API): void;
+
+  /**
+   * If exists, apply callback when Enter is pressed
+   */
+  onEnterPressed?: () => void;
 }
